@@ -202,7 +202,7 @@ async function cancelUserNewsletterEvents(userId: string) {
     // Filter events for this user that are newsletter.schedule events
     const userNewsletterEvents =
       events.data?.filter(
-        (event: any) =>
+        (event: { name: string; data?: { userId?: string } }) =>
           event.name === "newsletter.schedule" && event.data?.userId === userId
       ) || [];
 
@@ -285,7 +285,7 @@ async function rescheduleUserNewsletter(userId: string) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const supabase = await createClient();
 
   // Get the user session

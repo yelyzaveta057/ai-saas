@@ -30,7 +30,7 @@ export async function fetchArticles(
         return [];
       }
 
-      return data.articles.slice(0, 5).map((article: any) => ({
+      return data.articles.slice(0, 5).map((article: { title?: string; url?: string; description?: string }) => ({
         title: article.title || "No title",
         url: article.url || "#",
         description: article.description || "No description available",

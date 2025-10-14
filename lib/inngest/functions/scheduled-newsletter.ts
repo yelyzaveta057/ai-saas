@@ -76,7 +76,7 @@ export default inngest.createFunction(
               Articles:
               ${allArticles
                 .map(
-                  (article: any, index: number) =>
+                  (article: { title: string; description: string; url: string }, index: number) =>
                     `${index + 1}. ${article.title}\n   ${
                       article.description
                     }\n   Source: ${article.url}\n`
