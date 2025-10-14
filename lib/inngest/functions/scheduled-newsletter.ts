@@ -1,8 +1,10 @@
-import { inngest } from "@/inngest/client";
+
 import { fetchArticles } from "@/lib/news";
+import { createClient } from "@/lib/server";
 import emailjs from "@emailjs/nodejs";
 import { marked } from "marked";
-import { createClient } from "@/lib/supabase/server";
+import { inngest } from "../client";
+
 
 export default inngest.createFunction(
   { id: "newsletter/scheduled" },
