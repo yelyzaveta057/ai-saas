@@ -1,6 +1,6 @@
 "use client";
 
-import {  useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -48,7 +48,6 @@ const frequencyOptions = [
 export default function SelectPage() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedFrequency, setSelectedFrequency] = useState<string>("weekly");
- 
   const [isSaving, setIsSaving] = useState(false);
   const router = useRouter();
   const { user } = useAuth();
@@ -248,13 +247,14 @@ export default function SelectPage() {
             </div>
             <button
               type="submit"
+              disabled={isSaving || selectedCategories.length === 0}
               className={`px-6 py-3 rounded-lg font-medium text-white transition-colors ${
-                selectedCategories.length === 0
+                selectedCategories.length === 0 || isSaving
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-blue-600 hover:bg-blue-700"
               }`}
             >
-              Save Preferences
+              {isSaving ? "Saving..." : "Save Preferences"}
             </button>
           </div>
         </form>
