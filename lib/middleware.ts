@@ -60,13 +60,13 @@ export async function updateSession(request: NextRequest) {
 
       if (!active) {
         const url = request.nextUrl.clone();
-        url.pathname = "/subscribe";
+        url.pathname = "/dashboard";
         return NextResponse.redirect(url);
       }
     } catch (error) {
       console.error("Subscription check failed:", error);
       const url = request.nextUrl.clone();
-      url.pathname = "/subscribe";
+      url.pathname = "/dashboard";
       return NextResponse.redirect(url);
     }
   }
