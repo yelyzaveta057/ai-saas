@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-
-
 import { createClient } from "@/lib/client";
 
 export default function SignInPage() {
@@ -52,8 +50,8 @@ export default function SignInPage() {
         if (error) throw error;
         router.push("/dashboard");
       }
-    } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+    } catch (error: any) {
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
